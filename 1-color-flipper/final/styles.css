@@ -67,7 +67,7 @@ Global Styles
   box-sizing: border-box;
 }
 body {
-  font-family: var(--ff-secondary);
+  font-family:  'Montserrat', sans-serif;
   background: var(--clr-grey-10);
   color: var(--clr-grey-1);
   line-height: 1.5;
@@ -89,10 +89,10 @@ h2,
 h3,
 h4 {
   letter-spacing: var(--spacing);
-  text-transform: capitalize;
+  text-transform: uppercase;
   line-height: 1.25;
   margin-bottom: 0.75rem;
-  font-family: var(--ff-primary);
+  font-family: 'Montserrat', sans-serif;;
 }
 h1 {
   font-size: 3rem;
@@ -196,7 +196,7 @@ nav {
 }
 .nav-center h4 {
   margin-bottom: 0;
-  color: var(--clr-primary-5);
+  color: var(--clr-black);
 }
 .nav-links {
   display: flex;
@@ -235,3 +235,14 @@ main {
 .color {
   color: var(--clr-primary-5);
 }
+.container .image-pic{
+  width: 20%;
+  height: 20%;
+  margin-left: 40%;
+  margin-right: 35%;
+  padding-top: 0%;
+  box-shadow: var(--dark-shadow);
+  border-radius: 4%;
+}
+
+
