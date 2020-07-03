@@ -8,7 +8,7 @@ toggleBtn.addEventListener("click", function () {
   // } else {
   //   sidebar.classList.add("show-sidebar");
   // }
-  sidebar.classList.toggle("show-sidebar");
+  sidebar.classList.toggle("show-sidebar");   // this makes it in a single line.
 });
 
 closeBtn.addEventListener("click", function () {

@@ -51,14 +51,14 @@ const randomBtn = document.querySelector(".random-btn");
 let currentItem = 0;
 
 // load initial item
-window.addEventListener("DOMContentLoaded", function () {
+window.addEventListener("DOMContentLoaded", function () {   // on using window, it loads INITIAL one without clicking anywhere. Loads on loading the page.
   const item = reviews[currentItem];
   img.src = item.img;
   author.textContent = item.name;
   job.textContent = item.job;
   info.textContent = item.text;
 });
-
+                        // above one is only once while loading the site. (shud display smtng ryt)
 // show person based on item
 function showPerson(person) {
   const item = reviews[person];
@@ -67,6 +67,7 @@ function showPerson(person) {
   job.textContent = item.job;
   info.textContent = item.text;
 }
+                                      // after clicking, it works here on. From eventListener to showPerson() and overcomes initial item.
 // show next person
 nextBtn.addEventListener("click", function () {
   currentItem++;

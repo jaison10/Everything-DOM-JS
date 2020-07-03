@@ -270,13 +270,13 @@ Sidebar
   row-gap: 1rem;
   box-shadow: var(--clr-red-dark);
   transition: var(--transition);
-  transform: translate(-100%);
+  transform: translate(-100%);    /* this makes the sidebar hide. */
 }
 .show-sidebar {
-  transform: translate(0);
+  transform: translate(0);      /* when this class is added, it will be visible. */
 }
 @media screen and (min-width: 676px) {
   .sidebar {
-    width: 400px;
+    width: 400px;                    /* This is big screen i guess. */
   }
 }
