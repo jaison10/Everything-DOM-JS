@@ -233,17 +233,17 @@ Questions
 }
 /* hide text */
 .question-text {
-  display: none;
+  display: none;                /*Text will be hidden initially*/
 }
 .show-text .question-text {
-  display: block;
+  display: block;                 /*Adding this class will make it visible.*/
 }
 .minus-icon {
-  display: none;
+  display: none;                /* Minus icon is hidden by default. */
 }
 .show-text .minus-icon {
-  display: inline;
-}
+  display: inline;                /* Minus icon will be displayed instead of plus. */
+} 
 .show-text .plus-icon {
-  display: none;
+  display: none;                  /* Here plus will be hidden. */
 }
