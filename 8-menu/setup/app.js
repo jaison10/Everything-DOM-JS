@@ -72,3 +72,49 @@ const menu = [
     desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
   },
 ];
+
+const sectionCenter = document.querySelector(".section-center");
+const filterButtonsAll =  document.querySelectorAll(".filter-btn")
+
+//load items 
+window.addEventListener("DOMContentLoaded", function(){
+  displayMenuItem(menu);
+})
+
+// filter items. 
+
+filterButtonsAll.forEach(function(button){
+  button.addEventListener('click', function(e){
+    const category = e.currentTarget.dataset.id;         //dataset can be used since we have added "data-" in html. 'id' is the name. can be anything. 
+    
+    const categoryMenu = menu.filter(function(menuItem){
+      if()
+    })
+  })
+})
+
+
+
+
+
+
+function displayMenuItem(menuItems){
+  let displayMenu = menuItems.map(function(item){
+    // console.log(item);
+    return `<article class="menu-item">
+    <img src=${item.img} alt=${item.title} class="photo" />
+    <div class="item-info">
+      <header>
+        <h4>${item.title}</h4>
+        <h4 class="price">$${item.price}</h4>
+      </header>
+      <p class="item-text">
+        ${item.desc}
+      </p>
+    </div>
+  </article>`
+  })
+  displayMenu = displayMenu.join("") // adding this "" will remove the comma after every article and make on DOM. 
+  console.log(displayMenu)
+  sectionCenter.innerHTML = displayMenu;    // adding all the items to the web. 
+}
