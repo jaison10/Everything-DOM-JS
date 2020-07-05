@@ -71,6 +71,14 @@ const menu = [
     img: "./images/item-9.jpeg",
     desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
   },
+  {
+    id: 10,
+    title: "Newly added- Biriyani",
+    category: "dinner",
+    price: 30.99,
+    img: "./images/item-10.jpeg",
+    desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
+  }
 ];
 
 const sectionCenter = document.querySelector(".section-center");
@@ -79,7 +87,22 @@ const filterButtonsAll =  document.querySelectorAll(".filter-btn")
 //load items 
 window.addEventListener("DOMContentLoaded", function(){
   displayMenuItem(menu);
-})
+
+  // here we're collecting unique categories available. 
+  const categories = menu.reduce(function(values, item){     // values is the array we gonna form. And item refers to each item. 
+    if(!values.includes(item.category)){                     // comparing if its already there in list. (shud find  unique ones right)
+      values.push(item.category);
+    }
+    return values;
+  }, ["all"])  // all is default and initial value because we have all button as well.  And its not there in menu. 
+
+  console.log(categories);
+
+  const categoryButton = categories.map(function(eachCategory){
+
+  })
+
+});
 
 // filter items. 
 
@@ -118,6 +141,6 @@ function displayMenuItem(menuItems){
   </article>`
   })
   displayMenu = displayMenu.join("") // adding this "" will remove the comma after every article and make on DOM. 
-  console.log(displayMenu)
+  // console.log(displayMenu)
   sectionCenter.innerHTML = displayMenu;    // adding all the items to the web. 
 }
