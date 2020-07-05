@@ -88,18 +88,21 @@ filterButtonsAll.forEach(function(button){
     const category = e.currentTarget.dataset.id;         //dataset can be used since we have added "data-" in html. 'id' is the name. can be anything. 
     
     const categoryMenu = menu.filter(function(menuItem){
-      if()
-    })
+      if(menuItem.category === category){       // comparing the category of the button with the items. Matching ones stored in categoryMenu.
+        return menuItem; 
+      }
+    });
+    if(category === 'all'){
+      displayMenuItem(menu);    // if its all, pass the original menu.
+    }
+    else{
+      displayMenuItem(categoryMenu);   // if not pass the filtered menu array. 
+    }
   })
 })
 
-
-
-
-
-
 function displayMenuItem(menuItems){
-  let displayMenu = menuItems.map(function(item){
+  let displayMenu = menuItems.map(function(item){   // map each item. 
     // console.log(item);
     return `<article class="menu-item">
     <img src=${item.img} alt=${item.title} class="photo" />
