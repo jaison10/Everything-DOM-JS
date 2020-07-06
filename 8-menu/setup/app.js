@@ -82,47 +82,14 @@ const menu = [
 ];
 
 const sectionCenter = document.querySelector(".section-center");
-const filterButtonsAll =  document.querySelectorAll(".filter-btn")
+const buttonContainer = document.querySelector(".btn-container")
 
 //load items 
 window.addEventListener("DOMContentLoaded", function(){
   displayMenuItem(menu);
-
-  // here we're collecting unique categories available. 
-  const categories = menu.reduce(function(values, item){     // values is the array we gonna form. And item refers to each item. 
-    if(!values.includes(item.category)){                     // comparing if its already there in list. (shud find  unique ones right)
-      values.push(item.category);
-    }
-    return values;
-  }, ["all"])  // all is default and initial value because we have all button as well.  And its not there in menu. 
-
-  console.log(categories);
-
-  const categoryButton = categories.map(function(eachCategory){
-
-  })
-
+  displayButtonItem();
 });
 
-// filter items. 
-
-filterButtonsAll.forEach(function(button){
-  button.addEventListener('click', function(e){
-    const category = e.currentTarget.dataset.id;         //dataset can be used since we have added "data-" in html. 'id' is the name. can be anything. 
-    
-    const categoryMenu = menu.filter(function(menuItem){
-      if(menuItem.category === category){       // comparing the category of the button with the items. Matching ones stored in categoryMenu.
-        return menuItem; 
-      }
-    });
-    if(category === 'all'){
-      displayMenuItem(menu);    // if its all, pass the original menu.
-    }
-    else{
-      displayMenuItem(categoryMenu);   // if not pass the filtered menu array. 
-    }
-  })
-})
 
 function displayMenuItem(menuItems){
   let displayMenu = menuItems.map(function(item){   // map each item. 
@@ -143,4 +110,46 @@ function displayMenuItem(menuItems){
   displayMenu = displayMenu.join("") // adding this "" will remove the comma after every article and make on DOM. 
   // console.log(displayMenu)
   sectionCenter.innerHTML = displayMenu;    // adding all the items to the web. 
+}
+
+function displayButtonItem(){
+  // here we're collecting unique categories available. 
+  const categories = menu.reduce(function(values, item){     // values is the array we gonna form. And item refers to each item. 
+    if(!values.includes(item.category)){                     // comparing if its already there in list. (shud find  unique ones right)
+      values.push(item.category);
+    }
+    return values;
+  }, ["all"])  // all is default and initial value because we have all button as well.  And its not there in menu. 
+
+  console.log(categories);
+
+  let categoryButton = categories.map(function(eachCategory){
+    return `<button type="button" class="filter-btn" data-id="${eachCategory}">${eachCategory}</button>
+    `    
+  })
+  categoryButton = categoryButton.join("");
+  buttonContainer.innerHTML = categoryButton;
+
+  const filterButtonsAll =  buttonContainer.querySelectorAll(".filter-btn") // we are doing it here bcz, buttons are added dynamically here. Initially it won't be there.
+  // in above we are using buttonContainer.que... because buttons are inside that particular section. Needn't search in document. 
+
+  // filter items.
+  filterButtonsAll.forEach(function(button){
+    button.addEventListener('click', function(e){
+      const category = e.currentTarget.dataset.id;         //dataset can be used since we have added "data-" in html. 'id' is the name. can be anything. 
+      
+      const categoryMenu = menu.filter(function(menuItem){
+        if(menuItem.category === category){       // comparing the category of the button with the items. Matching ones stored in categoryMenu.
+          return menuItem; 
+        }
+      });
+      if(category === 'all'){
+        displayMenuItem(menu);    // if its all, pass the original menu.
+      }
+      else{
+        displayMenuItem(categoryMenu);   // if not pass the filtered menu array. 
+      }
+    });
+  });
+  console.log("button html",categoryButton);
 }
