@@ -60,7 +60,7 @@ Global Styles
 ===============
 */
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: smooth;           /*This is helping scrolling process go smoothly. */
 }
 *,
 ::after,
@@ -237,11 +237,11 @@ nav {
 }
 .links-container {
   height: 0;
-  overflow: hidden;
+  overflow: hidden;    /* This is hidden by default. */
   transition: var(--transition);
 }
 .show-links {
-  height: 200px;
+  height: 200px;      /*This would show it. SINCE the height is fixed, it will b a problem if there are less or more no. of links */
 }
 .links a {
   background: var(--clr-white);
@@ -276,7 +276,7 @@ nav {
     display: none;
   }
   .links-container {
-    height: auto !important;
+    height: auto !important;    /*This one is imp. Or else the logo would come down. */
   }
   .links {
     display: flex;
@@ -365,7 +365,6 @@ footer p {
   border-radius: var(--radius);
   color: var(--clr-white);
   animation: bounce 2s ease-in-out infinite;
-
   visibility: hidden;
   z-index: -100;
 }
