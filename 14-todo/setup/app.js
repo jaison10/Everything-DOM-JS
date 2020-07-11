@@ -48,15 +48,16 @@ function addItem(e){
           </button>
         </div>`;
 
-        const deleteButton = document.querySelector('.delete-btn');
-        const editButton = document.querySelector('.edit-btn');
-
-        deleteButton.addEventListener('click', deleteItem);
-        editButton.addEventListener('click', editItem);
-
+        
         // so as of now the item is created successfully. Above thing comes under grocery-item.
         // Now appending whatever created inside grocery-list
         groceryList.appendChild(element);
+
+        const deleteButton = document.querySelector(".delete-btn");
+        const editButton = document.querySelector(".edit-btn");
+
+        deleteButton.addEventListener('click', deleteItem);
+        editButton.addEventListener('click', editItem);
 
         //display alert
         alertDisplay('Item added successfully', 'success');
@@ -88,6 +89,7 @@ function clearItems(){
     groceryContainer.classList.remove("show-container");  // removing the container because or else "clear list" button will remain.
     alertDisplay("Empty list!", "danger");
     setBackToDefault();
+    // localStorage.removeItem('groceryList');
 }
 // display alert function.
 function alertDisplay(text, action){
@@ -103,13 +105,27 @@ function alertDisplay(text, action){
 
 // delete item
 function deleteItem(e){
-    const element = e.currentTarget.parentElement.parentElement;
-    console.log(element);
-    list.removeChild(element);
+    const element = e.currentTarget.parentElement.parentElement;  // this DOM traverse takes me to grocery-item class.
+    const id = element.dataset.id;
+    groceryList.removeChild(element);
+    if(groceryList.children.length === 0){   // if there exists no items, then needn't display "clear items" button.
+        groceryContainer.classList.remove("show-container");
+    }
+    alertDisplay("item removed", "success");
+    setBackToDefault();
+    // removing from local storage.
+    // removeFromLocalStorage(id);
 }
 // edit item
-function editItem(){
-
+function editItem(e){
+    const element = e.currentTarget.parentElement.parentElement;
+    // set edit item
+    editElement = e.currentTarget.parentElement.previousElementSibling; //  this will give the title.
+    // set form value
+    grocery.value = editElement.innerHTML;  // setting the item to be edited into the input box.
+    editFlag = true;
+    editId = element.dataset.id;
+    submitButton.textContent = 'edit';
 }
 
 // set back to default function.
@@ -123,6 +139,9 @@ function setBackToDefault(){
 // ****** LOCAL STORAGE **********
 
 function addToLocalStorage(id, value){
+
+}
+function removeFromLocalStorage(id){
 
 }
 // ****** SETUP ITEMS **********

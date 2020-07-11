@@ -26,11 +26,13 @@ window.addEventListener("DOMContentLoaded", setupItems);
 function addItem(e) {
   e.preventDefault();
   const value = grocery.value;
-  const id = new Date().getTime().toString();
+  const id = new Date().getTime().toString(); // this generates unique value easily.
 
-  if (value !== "" && !editFlag) {
-    const element = document.createElement("article");
-    let attr = document.createAttribute("data-id");
+  if (value !== "" && !editFlag) { // this means: if(value !== '' && editFlag === false).  Used to short hand syntax there.
+  // this is while adding an item.
+    const element = document.createElement("article");   // this comes inside the grocery-list
+    // create and add id dynamically.
+    let attr = document.createAttribute("data-id");  // data-id is the attribute of grocery-item class/part.
     attr.value = id;
     element.setAttributeNode(attr);
     element.classList.add("grocery-item");
@@ -53,16 +55,20 @@ function addItem(e) {
     editBtn.addEventListener("click", editItem);
 
     // append child
+    // so as of now the item is created successfully. Above thing comes under grocery-item.
+    // Now appending whatever created inside grocery-list
     list.appendChild(element);
     // display alert
     displayAlert("item added to the list", "success");
     // show container
+    // showing the container of lists and clear items button.
     container.classList.add("show-container");
     // set local storage
     addToLocalStorage(id, value);
     // set back to default
     setBackToDefault();
   } else if (value !== "" && editFlag) {
+    // this is while updatig an item.
     editElement.innerHTML = value;
     displayAlert("value changed", "success");
 
@@ -70,6 +76,7 @@ function addItem(e) {
     editLocalStorage(editID, value);
     setBackToDefault();
   } else {
+    // this is when the item is empty.
     displayAlert("please enter value", "danger");
   }
 }
@@ -92,7 +99,7 @@ function clearItems() {
       list.removeChild(item);
     });
   }
-  container.classList.remove("show-container");
+  container.classList.remove("show-container"); // removing the container because or else "clear list" button will remain.
   displayAlert("empty list", "danger");
   setBackToDefault();
   localStorage.removeItem("list");
