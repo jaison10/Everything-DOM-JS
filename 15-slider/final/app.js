@@ -25,10 +25,10 @@ function carousel() {
   // }
   // working with buttons
 
-  if (counter < slides.length - 1) {
+  if (counter < slides.length - 1) {   // if the slides are not over show the next button.
     nextBtn.style.display = "block";
   } else {
-    nextBtn.style.display = "none";
+    nextBtn.style.display = "none";   // if u reached the last slide, dont show anymore.
   }
   if (counter > 0) {
     prevBtn.style.display = "block";

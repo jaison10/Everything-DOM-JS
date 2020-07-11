@@ -189,7 +189,7 @@ Slider
   max-width: 80rem;
   position: relative;
   border-radius: 0.5rem;
-  overflow: hidden;
+  overflow: hidden;   /* This makes the rest of the list hide.*/
   margin-top: 4rem;
 }
 .slide {
@@ -264,6 +264,10 @@ Slider
     height: 65vh;
   }
 }
+
+/*Below part is how transform happens which we are doing in js instead hardcode.*/
+
+
 /* .slide:nth-child(1){
   left: 0;
 }
