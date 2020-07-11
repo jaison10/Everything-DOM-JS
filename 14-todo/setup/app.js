@@ -11,9 +11,14 @@ const clearButton = document.querySelector('.clear-btn');
 let editElement;
 let editFlag = false;
 let editId = "";
+
 // ****** EVENT LISTENERS **********
 // submit form
 form.addEventListener('submit', addItem);   // callback function.
+
+// clear items.
+clearButton.addEventListener('click', clearItems);
+
 // ****** FUNCTIONS **********
 function addItem(e){
     e.preventDefault();
@@ -42,6 +47,13 @@ function addItem(e){
             <i class="fas fa-trash"></i>
           </button>
         </div>`;
+
+        const deleteButton = document.querySelector('.delete-btn');
+        const editButton = document.querySelector('.edit-btn');
+
+        deleteButton.addEventListener('click', deleteItem);
+        editButton.addEventListener('click', editItem);
+
         // so as of now the item is created successfully. Above thing comes under grocery-item.
         // Now appending whatever created inside grocery-list
         groceryList.appendChild(element);
@@ -65,6 +77,18 @@ function addItem(e){
     }
 }
 
+function clearItems(){
+    const items = document.querySelectorAll('.grocery-item');
+
+    if(items.length > 0){
+        items.forEach(function(item){
+            groceryList.removeChild(item);
+        })
+    }
+    groceryContainer.classList.remove("show-container");  // removing the container because or else "clear list" button will remain.
+    alertDisplay("Empty list!", "danger");
+    setBackToDefault();
+}
 // display alert function.
 function alertDisplay(text, action){
     alert.textContent = text;
@@ -77,9 +101,23 @@ function alertDisplay(text, action){
     }, 2000)
 }
 
+// delete item
+function deleteItem(e){
+    const element = e.currentTarget.parentElement.parentElement;
+    console.log(element);
+    list.removeChild(element);
+}
+// edit item
+function editItem(){
+
+}
+
 // set back to default function.
 function setBackToDefault(){
-    
+    grocery.value = '';          // making the input box empty after inserting.
+    editFlag = false;
+    editId = '';
+    submitButton.textContent = "submit";
 }
 
 // ****** LOCAL STORAGE **********
