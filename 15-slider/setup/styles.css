@@ -193,7 +193,7 @@ Slider
   margin-top: 4rem;
 }
 .slide {
-  position: absolute;
+  position: absolute;  /*This sets the position. One on another. */
   width: 100%;
   height: 100%;
   background: var(--clr-primary-9);
@@ -269,10 +269,10 @@ Slider
 
 
 /* .slide:nth-child(1){
-  left: 0;
+  left: 0;                  this shows the first item.
 }
 .slide:nth-child(2){
-  left: 100%;
+  left: 100%;               this is the second
 }
 .slide:nth-child(3){
   left: 200%;
