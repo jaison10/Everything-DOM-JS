@@ -25,7 +25,7 @@ body {
   border-color: var(--mainOrange);
 }
 .feedback {
-  display: none;
+  display: none;              /*Feedback is hidden initially. */
 }
 
 textarea {
