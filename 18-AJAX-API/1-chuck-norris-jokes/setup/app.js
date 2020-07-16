@@ -4,11 +4,15 @@ const img = document.querySelector('.container img');
 
 const url = "https://api.chucknorris.io/jokes/random";
 
-btn.addEventListener('click',()=> {
-    fetch(url)
-    .then((data) => data.json())
-    .then(response => displayData(response)) // the second 'then' because .json() returns promise.
-    .catch(err=> console.log(err));  
+btn.addEventListener('click', async()=> {
+    try{
+        const data = await fetch(url);
+        const response = await data.json();
+        displayData(response);
+    }
+    catch(error){
+        console.log(error);
+    }
 });
 
 function displayData(response){
