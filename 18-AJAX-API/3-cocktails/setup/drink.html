@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Single Cocktail</title>
+    <title>Cocktails</title>
     <!-- font-awesome -->
     <link
       rel="stylesheet"
@@ -12,8 +12,23 @@
     <!-- css -->
     <link rel="stylesheet" href="./styles.css" />
   </head>
+
   <body>
-    <h1>single drink</h1>
-    <script type="module" src="./singleDrink.js"></script>
+    <form class="search-form">
+      <h2>cocktails API</h2>
+      <input
+        type="text"
+        placeholder="search your favorite cocktail"
+        name="drink"
+      />
+    </form>
+    <section class="section cocktails">
+      <article class="loading">
+        <img src="./loading.gif" alt="loading" />
+      </article>
+      <h2 class="title"></h2>
+      <div class="section-center"></div>
+    </section>
+    <script type="module" src="./app.js"></script>
   </body>
 </html>
